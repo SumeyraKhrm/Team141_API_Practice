@@ -25,14 +25,20 @@ public class C01_Get_ResponseBodyYazdirma {
         // 3- Request gonderip, donen response'i kaydetme
 
         Response response = given().when().get(Url);
-        response.prettyPrint();
+        response.prettyPrint();  //sadece response body sini yazdırıyor
 
         // 4- Assertion
 
-        //Postman daki responce un aynısınıı getirdi !!
+        /* Postman daki responce un aynısını getirdi !!
+        Response olustururken kullandigimiz
+        given : Testimize baslarken bize verilen baslangic degerlerini ifade eder
+        when : Testimizde gerceklestirdigimiz islemleri ifade eder
+        then : Response degerlerini degerlendirmek icin yapilan islemleri ifade eder
+        and : Birbirine bagli islemleri ifade eder
+
+         */
 
 
-    }
-
+        }
 
     }
