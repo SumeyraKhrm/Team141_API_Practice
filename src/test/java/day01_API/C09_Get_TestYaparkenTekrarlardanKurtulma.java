@@ -1,6 +1,12 @@
 package day01_API;
 
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.junit.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
 
 public class C09_Get_TestYaparkenTekrarlardanKurtulma {
 
@@ -22,6 +28,40 @@ public class C09_Get_TestYaparkenTekrarlardanKurtulma {
          */
 
         // 1- endpoint ve request body hazirla
+        String url =" https://restful-booker.herokuapp.com/booking/10";
+
+        // 2- expected data olustur
+        // 3- request gonderip, donen response'i kaydet
+
+        Response response= given().when().get(url);
+
+        // 4- Assertion
+
+        /*ikinci yontem ile yaptigimizda bu testimizdeki yazilanlar degismesin diye yoruma aldim.
+
+        response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("firstname", Matchers.equalTo("Susan"))
+                .body("lastname",Matchers.equalTo("Ericsson"))
+                .body("totalprice",Matchers.lessThan(1000))
+                .body("depositpaid",Matchers.equalTo(false))
+                .body("additionalneeds",Matchers.notNullValue());
+
+       */
+
+        response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("firstname",equalTo("Sally"),
+                        "lastname",equalTo("Ericsson"),
+                        "totalprice",lessThan(1000),
+                        "depositpaid",equalTo(false),
+                        "additionalneeds",equalTo(null));
 
 
 

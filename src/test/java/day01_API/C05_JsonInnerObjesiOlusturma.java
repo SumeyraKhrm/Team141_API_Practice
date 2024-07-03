@@ -3,7 +3,7 @@ package day01_API;
 import org.json.JSONObject;
 import org.junit.Test;
 
-public class C05_JsonObjesiOlusturma {
+public class C05_JsonInnerObjesiOlusturma {
 
     @Test
     public void test01(){
