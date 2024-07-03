@@ -1,8 +1,7 @@
-package day01_API;
+package Test_API;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import netscape.javascript.JSObject;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.Test;

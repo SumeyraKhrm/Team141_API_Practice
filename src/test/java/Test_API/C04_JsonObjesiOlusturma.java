@@ -1,6 +1,5 @@
-package day01_API;
+package Test_API;
 
-import netscape.javascript.JSObject;
 import org.json.JSONObject;
 import org.junit.Test;
 

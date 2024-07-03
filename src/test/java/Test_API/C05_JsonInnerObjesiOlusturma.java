@@ -1,4 +1,4 @@
-package day01_API;
+package Test_API;
 
 import org.json.JSONObject;
 import org.junit.Test;
