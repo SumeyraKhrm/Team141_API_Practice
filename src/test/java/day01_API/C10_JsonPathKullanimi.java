@@ -55,17 +55,5 @@ public class C10_JsonPathKullanimi {
                         .get("number"));
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-}
+      }
 }
