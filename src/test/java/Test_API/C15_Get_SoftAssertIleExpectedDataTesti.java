@@ -54,10 +54,7 @@ public class C15_Get_SoftAssertIleExpectedDataTesti {
         //response.prettyPrint();
 
 
-
-
         // 4- Assertion
-
         // oncelikle response uzerindeki bilgileri kolay almak icin
         // JSonPath'e cast edelim
 
@@ -80,6 +77,8 @@ public class C15_Get_SoftAssertIleExpectedDataTesti {
         softAssert.assertEquals(responseJspnPath.get("data.profile_image"),
                 expectedData.getJSONObject("data").get("profile_image"));
 
+
+        softAssert.assertAll();
 
 
 
