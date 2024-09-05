@@ -39,7 +39,7 @@ public class C02_Get_ResponseBilgilerininManuelTestEdilmesi {
                 "\nStatus Line : " + response.getStatusLine()+
                 "\nResponse suresi : " + response.getTime()+"ms");
 
-        response.prettyPrint();
+
 
     }
 }

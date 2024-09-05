@@ -37,6 +37,5 @@ public class C03_Get_ResponseDegerleriniOtomasyonIleTestEtme {
                 .statusLine("HTTP/1.1 200 OK");
 
 
-
     }
 }

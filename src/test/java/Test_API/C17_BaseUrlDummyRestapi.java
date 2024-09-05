@@ -45,7 +45,8 @@ public class C17_BaseUrlDummyRestapi extends BaseUrlJsonPlaceholder {
 
 
         @Test
-        public void test02(){
+        public void
+        test02(){
             //2- https://jsonplaceholder.typicode.com/posts/44 endpointine
             //   bir GET request gonderdigimizde donen response’un
             //   status code’unun 200 oldugunu
@@ -61,7 +62,7 @@ public class C17_BaseUrlDummyRestapi extends BaseUrlJsonPlaceholder {
                     .when().spec(specJsonPlaceholder)
                     .get("/{pp1/pp2}");
 
-            response.prettyPrint();
+            //response.prettyPrint();
 
             response.then().assertThat()
                     .statusCode(200)
