@@ -2,6 +2,7 @@ package Test_API;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
@@ -32,17 +33,16 @@ public class C12_Get_ResponseBodyTestiListKullanimi {
 
         Response response = given().when().get(url);
 
-        // response.prettyPrint();
+        response.prettyPrint();
 
         //4- Assertions
 
         response.then().assertThat()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("data.id",hasSize(24),
-                        "data.employee_name",hasItem("Ashton Cox"),
+                .body("data.id", hasSize(24),
+                        "data.employee_name", hasItem("Ashton Cox"),
                         "data.employee_age",hasItems(61,21,35));
-
 
        }
     }

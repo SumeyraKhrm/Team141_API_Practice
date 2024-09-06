@@ -24,6 +24,7 @@ public class C10_JsonPathKullanimi {
 
         cepTelJsonObj.put("type","iPhone");
         cepTelJsonObj.put("number","0123-4567-8888");
+
         evTelJsonObj.put("type","home");
         evTelJsonObj.put("number","0123-4567-8910");
 
@@ -37,7 +38,8 @@ public class C10_JsonPathKullanimi {
         kisiBilgileriJsonObj.put("address",adresJsonObj);
         kisiBilgileriJsonObj.put("phoneNumbers",telefonBilgileriArr);
 
-        System.out.println(kisiBilgileriJsonObj);
+        System.out.println(kisiBilgileriJsonObj);  //yazdırmak için..
+        //Jsonpath.com adresine koyarak görsellik için önemli
 
         System.out.println("firstName : "+kisiBilgileriJsonObj.get("firstName"));
         System.out.println("lastName : "+kisiBilgileriJsonObj.get("lastName"));

@@ -66,7 +66,7 @@ public class C11_Post_JsonPathIleBodyTesti {
                 .post(url);
 
 
-       // response.prettyPrint();  kontrol amaçlı
+        response.prettyPrint();  //kontrol amaçlı
 
         //4- Assertion
 

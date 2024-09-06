@@ -56,8 +56,8 @@ public class C09_Get_TestYaparkenTekrarlardanKurtulma {
                 .assertThat()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("firstname",equalTo("Sally"),
-                        "lastname",equalTo("Ericsson"),
+                .body("firstname",equalTo("Susan"),
+                        "lastname",equalTo("Smith"),
                         "totalprice",lessThan(1000),
                         "depositpaid",equalTo(false),
                         "additionalneeds",equalTo(null));
