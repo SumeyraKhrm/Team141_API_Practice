@@ -32,6 +32,8 @@ public class C07_Get_ResponseBodyTesti {
         Response response = given().when().get(url);
 
 
+        response.prettyPrint();
+
         // 4- Assertion
 
         response.then().assertThat()
@@ -39,10 +41,6 @@ public class C07_Get_ResponseBodyTesti {
                 .contentType(ContentType.JSON)
                 .body("userId", Matchers.equalTo(5))
                 .body("title",Matchers.equalTo("optio dolor molestias sit"));
-
-
-
-
 
 
 

@@ -8,10 +8,12 @@ import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class C08_Post_ResponseBodyTesti {
+public class yedek {
 
-    @Test
-    public void test01(){
+    public class C08_Post_ResponseBodyTesti {
+
+        @Test
+        public void test01(){
 
           /*
                     https://jsonplaceholder.typicode.com/posts  url’ine
@@ -30,36 +32,34 @@ public class C08_Post_ResponseBodyTesti {
                         test edin.
          */
 
-        // 1- endpoint ve request body hazirla
-        String url ="https://jsonplaceholder.typicode.com/posts";
+            // 1- endpoint ve request body hazirla
+    String url ="https://jsonplaceholder.typicode.com/posts";
 
-        JSONObject requestBody = new JSONObject();
+    JSONObject requestBody = new JSONObject();
         requestBody.put("title","API");
         requestBody.put("body","API ogrenmek ne guzel");
         requestBody.put("userId",10);
 
-        System.out.println(requestBody);
+    // 2- expected data olustur
+    // 3- request gonderip, donen response'i kaydet
 
+    //bunun body sini de gönderebilmemiz için boyle yazıyoruz
 
-        // 2- expected body olustur
-        // 3- request gonder ve donen response'i kaydet
-        Response response = given().contentType(ContentType.JSON)
-                .when().body(requestBody.toString())
-                .post(url);
-
+    Response response = given().contentType(ContentType.JSON)
+            .when().body(requestBody.toString())
+            .post(url);
 
         response.prettyPrint();
 
 
-        // 4- Assertion
+    // 4- Assertion
         response.then().assertThat()
                 .statusCode(201)
                 .contentType(ContentType.JSON)
                 .body("title",Matchers.equalTo("API"))
-                .body("userId",Matchers.lessThan(100))
-                .body("body",Matchers.containsString("API"));
+            .body("userId",Matchers.lessThan(100))
+            .body("body",Matchers.containsString("API"));
 
-
-
+}
     }
 }

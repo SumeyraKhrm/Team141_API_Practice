@@ -39,7 +39,7 @@ public class C06_Put_ResponseBilgileriAssertion {
         requestBody.put("userId",10);
         requestBody.put("id",70);
 
-        // 2- expected body olustur
+        // 2- expected body olustur (doneen responsela ilgili bişey yok soruda)
         // 3- request gonder ve donen response'i kaydet
 
         Response response = given().contentType(ContentType.JSON)

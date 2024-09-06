@@ -29,11 +29,10 @@ public class C05_JsonInnerObjesiOlusturma {
 
         // sonra outer json objesini olusturup, yeri geldiginde inner objeyi koyalim
 
-
         JSONObject requestBody = new JSONObject();
         requestBody.put("firstname","Jim");
         requestBody.put("additionalneeds","Breakfast");
-        requestBody.put("bookingdates",dateJsonObject);
+        requestBody.put("bookingdates",dateJsonObject); //inner Json kullanılır !
         requestBody.put("totalprice",111);
         requestBody.put("depositpaid",true);
         requestBody.put("lastname","Brown");
