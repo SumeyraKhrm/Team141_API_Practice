@@ -1,65 +1,87 @@
 package Test_API;
 
-import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.Test;
+import org.testng.asserts.SoftAssert;
 
 import static io.restassured.RestAssured.given;
 
-public class yedek {
+public class yedek{
 
-    public class C08_Post_ResponseBodyTesti {
+    @Test
+    public void test01(){
+        /*
+        http://dummy.restapiexample.com/api/v1/employee/3 url’ine
+        bir GET request gonderdigimizde
+        donen response’un asagidaki gibi oldugunu test edin.
+            Response Body
+            {
+                "status":"success",
+                "data":{
+                        "id":3,
+                        "employee_name":"Ashton Cox",
+                        "employee_salary":86000,
+                        "employee_age":66,
+                        "profile_image":""
+                        },
+                "message":"Successfully! Record has been fetched."
+            }
+     */
 
-        @Test
-        public void test01(){
+        // 1- end point ve request body olustur
+        String url ="http://dummy.restapiexample.com/api/v1/employee/3";
 
-          /*
-                    https://jsonplaceholder.typicode.com/posts  url’ine
-                    asagidaki body ile bir POST request gonderdigimizde
-                        {
-                        "title":"API",
-                        "body":"API ogrenmek ne guzel",
-                        "userId":10
-                        }
-                     donen Response’un,
-                        status code’unun 201,
-                        ve content type’inin application/json
-                        ve Response Body'sindeki,"title"'in "API" oldugunu
-                        "userId" degerinin 100'den kucuk oldugunu,
-                        "body" nin "API" kelimesi icerdigini
-                        test edin.
-         */
+        // 2- expected data olustur
 
-            // 1- endpoint ve request body hazirla
-    String url ="https://jsonplaceholder.typicode.com/posts";
-
-    JSONObject requestBody = new JSONObject();
-        requestBody.put("title","API");
-        requestBody.put("body","API ogrenmek ne guzel");
-        requestBody.put("userId",10);
-
-    // 2- expected data olustur
-    // 3- request gonderip, donen response'i kaydet
-
-    //bunun body sini de gönderebilmemiz için boyle yazıyoruz
-
-    Response response = given().contentType(ContentType.JSON)
-            .when().body(requestBody.toString())
-            .post(url);
-
-        response.prettyPrint();
+        JSONObject expectedData= new JSONObject();
+        JSONObject dataBilgileriJson=new JSONObject();
 
 
-    // 4- Assertion
-        response.then().assertThat()
-                .statusCode(201)
-                .contentType(ContentType.JSON)
-                .body("title",Matchers.equalTo("API"))
-            .body("userId",Matchers.lessThan(100))
-            .body("body",Matchers.containsString("API"));
+        dataBilgileriJson.put("id",3);
+        dataBilgileriJson.put("employee_name","Ashton Cox");
+        dataBilgileriJson.put("employee_salary",86000);
+        dataBilgileriJson.put("employee_age",66);
+        dataBilgileriJson.put("profile_image","");
 
-}
+        expectedData.put("status","success");
+        expectedData.put("data",dataBilgileriJson);
+        expectedData.put("message","Successfully! Record has been fetched.");
+
+
+        // 3- Request gonder, donen response'i kaydet
+        Response response = given().when().get(url);
+        //response.prettyPrint();
+
+
+        // 4- Assertion
+        // oncelikle response uzerindeki bilgileri kolay almak icin
+        // JSonPath'e cast edelim
+
+        JsonPath responseJspnPath = response.jsonPath();
+
+        // Assertion'lari soft assert ile yapalim
+
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertEquals(responseJspnPath.get("status"),expectedData.get("status"));
+        softAssert.assertEquals(responseJspnPath.get("message"),expectedData.get("message"));
+        softAssert.assertEquals(responseJspnPath.get("data.id"),
+                expectedData.getJSONObject("data").get("id"));
+        softAssert.assertEquals(responseJspnPath.get("data.employee_name"),
+                expectedData.getJSONObject("data").get("employee_name"));
+        softAssert.assertEquals(responseJspnPath.get("data.employee_salary"),
+                expectedData.getJSONObject("data").get("employee_salary"));
+        softAssert.assertEquals(responseJspnPath.get("data.employee_age"),
+                expectedData.getJSONObject("data").get("employee_age"));
+        softAssert.assertEquals(responseJspnPath.get("data.profile_image"),
+                expectedData.getJSONObject("data").get("profile_image"));
+
+
+        softAssert.assertAll();
+
+
     }
 }
+

@@ -33,7 +33,7 @@ public class C13_Get_ExpectedDataOlusturma {
         // 1- endpoint ve request body hazirla
         String url ="https://jsonplaceholder.typicode.com/posts/22";
 
-        // 2- expected data olustur
+        // 2- expected data olustur (response body si
 
         JSONObject expectedData = new JSONObject();
         expectedData.put("userId",3);

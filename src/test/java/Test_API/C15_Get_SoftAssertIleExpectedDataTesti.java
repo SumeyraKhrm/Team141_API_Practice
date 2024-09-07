@@ -31,10 +31,9 @@ public class C15_Get_SoftAssertIleExpectedDataTesti {
      */
 
         // 1- end point ve request body olustur
-        String url ="http://dummy.restapiexample.com/api/v1/employee/3";
+        String url=" http://dummy.restapiexample.com/api/v1/employee/3";
 
         // 2- expected data olustur
-
         JSONObject expectedData= new JSONObject();
         JSONObject dataBilgileriJson=new JSONObject();
 
@@ -48,51 +47,37 @@ public class C15_Get_SoftAssertIleExpectedDataTesti {
         expectedData.put("data",dataBilgileriJson);
         expectedData.put("message","Successfully! Record has been fetched.");
 
+        //System.out.println(expectedData.toString());
 
         // 3- Request gonder, donen response'i kaydet
+
         Response response = given().when().get(url);
-        //response.prettyPrint();
+
+       // response.prettyPrint();
 
 
         // 4- Assertion
-        // oncelikle response uzerindeki bilgileri kolay almak icin
-        // JSonPath'e cast edelim
-
-        JsonPath responseJspnPath = response.jsonPath();
-
+        // oncelikle response uzerindeki bilgileri kolay almak icin JSonPath'e cast edelim
         // Assertion'lari soft assert ile yapalim
 
-        SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(responseJspnPath.get("status"),expectedData.get("status"));
-        softAssert.assertEquals(responseJspnPath.get("message"),expectedData.get("message"));
-        softAssert.assertEquals(responseJspnPath.get("data.id"),
+        JsonPath responseJsonPath = response.jsonPath();
+        SoftAssert softAssert= new SoftAssert();
+
+        softAssert.assertEquals(responseJsonPath.get("status"),expectedData.get("status"));
+        softAssert.assertEquals(responseJsonPath.get("message"),expectedData.get("message"));
+        softAssert.assertEquals(responseJsonPath.get("data.id"),
                 expectedData.getJSONObject("data").get("id"));
-        softAssert.assertEquals(responseJspnPath.get("data.employee_name"),
-                expectedData.getJSONObject("data").get("employee_name"));
-        softAssert.assertEquals(responseJspnPath.get("data.employee_salary"),
+        softAssert.assertEquals(responseJsonPath.get("data.employee_name"),
+                "Ali Can"); //bilerek yapıldı
+        softAssert.assertEquals(responseJsonPath.get("data.employee_salary"),
                 expectedData.getJSONObject("data").get("employee_salary"));
-        softAssert.assertEquals(responseJspnPath.get("data.employee_age"),
+        softAssert.assertEquals(responseJsonPath.get("data.employee_age"),
                 expectedData.getJSONObject("data").get("employee_age"));
-        softAssert.assertEquals(responseJspnPath.get("data.profile_image"),
-                expectedData.getJSONObject("data").get("profile_image"));
-
+        softAssert.assertEquals(responseJsonPath.get("data.profile_image"),
+                "resim");
 
         softAssert.assertAll();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
