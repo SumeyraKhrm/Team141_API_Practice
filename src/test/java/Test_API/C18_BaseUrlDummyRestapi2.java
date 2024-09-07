@@ -10,6 +10,7 @@ import static io.restassured.RestAssured.given;
 public class C18_BaseUrlDummyRestapi2 extends BaseUrlJsonPlaceholder {
 
 
+
     @Test
     public void test01(){
         //3- https://jsonplaceholder.typicode.com/posts/50 endpointine
@@ -19,26 +20,25 @@ public class C18_BaseUrlDummyRestapi2 extends BaseUrlJsonPlaceholder {
 
 
         // 1- endpoint ve request body olustur
+
         specJsonPlaceholder.pathParams("pp1","posts","pp2",50);
+
 
         // 2- expected data olustur
         // 3- request gonder ve donen response'i kaydet
 
-        Response response =
-                given().when()
-                        .spec(specJsonPlaceholder).delete("/{pp1/pp2}");
+        Response response= given()
+                .when().spec(specJsonPlaceholder)
+                .delete("/{pp1}/{pp2}");
 
-        response.prettyPrint();
 
         // 4- Assertion
 
-        response.then().assertThat()
+        response
+                .then()
+                .assertThat()
                 .statusCode(200)
-                .body("title", Matchers.nullValue());
-
-
-
-
+                .body("title",Matchers.nullValue());
 
 
     }

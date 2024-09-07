@@ -7,7 +7,7 @@ import org.junit.Before;
 public class BaseUrlHerokuapp {
 
 
-    RequestSpecification specHerokuapp;
+     protected  RequestSpecification specHerokuapp;
 
     @Before
     public void setUp(){
