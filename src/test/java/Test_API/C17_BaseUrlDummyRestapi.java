@@ -12,11 +12,8 @@ import static io.restassured.RestAssured.given;
 
 public class C17_BaseUrlDummyRestapi extends BaseUrlJsonPlaceholder {
 
-    //Class icinde 3 Test metodu olusturun ve asagidaki testleri yapin
+    //Class icinde 2 Test metodu olusturun ve asagidaki testleri yapin
 
-    //3- https://jsonplaceholder.typicode.com/posts/50 endpointine
-    //   bir DELETE request gonderdigimizde donen response’un
-    //   status code’unun 200 oldugunu ve response body’sinin null oldugunu test edin
 
     @Test
     public void test01(){
@@ -26,7 +23,7 @@ public class C17_BaseUrlDummyRestapi extends BaseUrlJsonPlaceholder {
         //    status code’unun 200 oldugunu ve Response’ta 100 kayit oldugunu test edin
 
         // 1- endpoint ve request body olustur
-        specJsonPlaceholder.pathParam("pp1","posts");
+        specJsonPlaceholder.pathParam("pp1","posts"); //bir tane oldugu icin
 
         // 2- expected data olustur
         // 3- request gonder ve donen response'i kaydet
@@ -64,20 +61,11 @@ public class C17_BaseUrlDummyRestapi extends BaseUrlJsonPlaceholder {
 
             //response.prettyPrint();
 
+
             response.then().assertThat()
                     .statusCode(200)
                     .body("title",Matchers.equalTo("optio dolor molestias sit"));
 
 
-
-
-
-
-
-
-
-
         }
-
-
 }
