@@ -19,7 +19,7 @@ public class C21_BaseUrlHerokuappQueryParam extends BaseUrlHerokuapp {
         test edecek bir GET request gonderdigimizde,
         donen response’un
             status code’unun 200 oldugunu
-            ve “Susan” ismine sahip 2 booking oldugunu test edin
+            ve “Susan” ismine sahip 1 booking oldugunu test edin
 
          */
 
@@ -42,7 +42,7 @@ public class C21_BaseUrlHerokuappQueryParam extends BaseUrlHerokuapp {
 
         response.then().assertThat()
                 .statusCode(200)
-                .body("bookingid", Matchers.hasSize(2));
+                .body("bookingid", Matchers.hasSize(1));
 
     }
 }

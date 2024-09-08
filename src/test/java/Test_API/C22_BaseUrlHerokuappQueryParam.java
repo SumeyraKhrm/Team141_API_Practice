@@ -1,8 +1,13 @@
 package Test_API;
 
+import baseUrl.BaseUrlHerokuapp;
+import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
-public class C22_BaseUrlHerokuappQueryParam {
+import static io.restassured.RestAssured.given;
+
+public class C22_BaseUrlHerokuappQueryParam extends BaseUrlHerokuapp {
 
 
     @Test
@@ -20,9 +25,29 @@ public class C22_BaseUrlHerokuappQueryParam {
          */
 
         // 1- endpoint ve request body olustur
+        specHerokuapp
+                .pathParam("pp1","booking")
+                .queryParams("firstname","Susan","lastname","Jones");
 
 
+        // 2- expected data olustur
+        // 3- request gonder ve donen response'i kaydet
 
+        Response response= given()
+                .when().spec(specHerokuapp)
+                .get("/{pp1}");
+
+
+        response.prettyPrint();
+
+
+        // 4- Assertion
+
+        response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body("bookingid", Matchers.hasSize(1));
 
 
     }
