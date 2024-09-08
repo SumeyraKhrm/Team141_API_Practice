@@ -36,7 +36,7 @@ public class C24_Get_TestDataClassKullanimiDinamik extends BaseUrlJsonPlaceholde
 
         // 2- expected data olustur
         JSONObject expectedData = TestDataJsonPlaceholder
-                .responseJsonBodyOlustur(4,40,"enim quo cumque","ut voluptatum aliquid illo tenetur nemo sequi quo facilis\nipsum rem optio mollitia quas\nvoluptatem eum voluptas qui\nunde omnis voluptatem iure quasi maxime voluptas nam"
+                .JsonBodyOlustur(4,40,"enim quo cumque","ut voluptatum aliquid illo tenetur nemo sequi quo facilis\nipsum rem optio mollitia quas\nvoluptatem eum voluptas qui\nunde omnis voluptatem iure quasi maxime voluptas nam"
     );
 
         System.out.println(expectedData);
