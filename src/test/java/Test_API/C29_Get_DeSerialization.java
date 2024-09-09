@@ -39,7 +39,7 @@ public class C29_Get_DeSerialization extends BaseUrlDummyExample {
     @Test
     public void test01(){
         // 1- endpoint ve request body olustur
-        specDummyExample.pathParams("pp1","employee","pp2","3");
+        specDummyExample.pathParams("pp1","employee","pp2","3.0");
 
 
         // 2- Soruda varsa expected data olustur
@@ -83,11 +83,6 @@ public class C29_Get_DeSerialization extends BaseUrlDummyExample {
 
         assertEquals(((Map) expectedData.get("data")).get("employee_age"),
                 ((Map) responseMap.get("data")).get("employee_age"));
-
-
-
-
-
 
 
     }
